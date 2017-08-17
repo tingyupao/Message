@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Message Type In</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"/>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container-fluid">
+
+<form action="#" method="post" th:action="@{/process}" th:object="${message}">
+
+<input type= "hidden" th:field="*{id}"/>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-4">Content: <textarea class="form-control" rows="3" th:field="*{content}" placeholder="What do you want to say?"></textarea></div>
+    <span th:if="${#fields.hasErrors('content')}" th:errors="*{content}"></span><br/>
+</div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-4">Date:<input type="text" class="form-control" th:field="*{date}" placeholder="date"/></div>
+    <span th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></span><br/>
+</div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-4">Sender:<input type="text" class="form-control" th:field="*{sender}" placeholder="Who are you?"/></div>
+    <span th:if="${#fields.hasErrors('sender')}" th:errors="*{sender}"></span><br/>
+</div>
+    </div>
+<br/>
+    <input type="submit" class="btn btn-success" value="Send"/>
+</form>
+</div>
+</body>
+</html>
